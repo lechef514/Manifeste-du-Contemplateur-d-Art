@@ -1,265 +1,107 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manifeste du contemplateur d’art</title>
-
-<style>
-  body {
-    margin: 0;
-    padding: 60px 20px;
-    background: black;
-    color: #00FF00;
-    font-family: "Courier New", monospace;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 42px;
-    letter-spacing: 3px;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-  }
-
-  .controls {
-    margin-bottom: 50px;
-  }
-
-  button {
-    background: black;
-    border: 1px solid #00FF00;
-    color: #00FF00;
-    font-family: "Courier New", monospace;
-    padding: 10px 18px;
-    margin: 6px;
-    cursor: pointer;
-    transition: 0.2s ease;
-    font-size: 15px;
-  }
-
-  button:hover {
-    background: #00FF00;
-    color: black;
-  }
-
-  .container {
-    max-width: 900px;
-    margin: auto;
-    text-align: left;
-  }
-
-  .paragraph {
-    opacity: 0;
-    transition: opacity 1.4s ease-in-out;
-    font-size: 20px;
-    line-height: 1.8;
-    margin: 45px 0;
-    white-space: pre-wrap;
-  }
-
-  .signature {
-    margin-top: 60px;
-    text-align: center;
-    font-style: italic;
-    opacity: 0.85;
-    font-size: 18px;
-  }
-
-  .newsletter {
-    margin-top: 70px;
-    padding-top: 35px;
-    border-top: 1px solid #00FF00;
-    text-align: center;
-  }
-
-  .newsletter h2 {
-    font-size: 26px;
-    margin-bottom: 12px;
-  }
-
-  .newsletter p {
-    font-size: 16px;
-    margin-bottom: 28px;
-    line-height: 1.6;
-  }
-
-  .newsletter a {
-    display: inline-block;
-    padding: 14px 30px;
-    border: 2px solid #00FF00;
-    color: #00FF00;
-    text-decoration: none;
-    transition: 0.2s ease;
-    font-size: 17px;
-  }
-
-  .newsletter a:hover {
-    background: #00FF00;
-    color: black;
-  }
-</style>
-</head>
-
-<body>
-
-<h1>Manifeste du contemplateur d’art</h1>
-
-<div class="controls">
-  <button id="startExperience">▶ Entrer dans la lecture</button>
-  <button id="silenceToggle">◼ Silence only</button>
-</div>
-
-<div class="container">
-
-  <p class="paragraph">
-Le contemplateur d’art est un être poreux.  
-Il ne saisit pas l’œuvre.  
-Il lui offre un passage.
-  </p>
-
-  <p class="paragraph">
-Il ne cherche pas le sens.  
-Il s’y rend disponible.
-  </p>
-
-  <p class="paragraph">
-Le regard n’éclaire pas.  
-Il accueille.  
-Il devient surface sensible.
-  </p>
-
-  <p class="paragraph">
-Contempler n’est pas analyser.  
-C’est ralentir,  
-jusqu’à percevoir  
-le mouvement discret  
-de ce qui semble immobile.
-  </p>
-
-  <p class="paragraph">
-L’œuvre n’exige aucune explication.  
-Elle existe.  
-Elle attend un espace intérieur  
-où résonner.
-  </p>
-
-  <p class="paragraph">
-Le contemplateur devient instrument.  
-L’œuvre se déploie en lui.
-  </p>
-
-  <p class="paragraph">
-L’attention qu’il offre  
-est une forme d’amour,  
-sans désir de possession.
-  </p>
-
-  <p class="paragraph">
-Regarder une œuvre,  
-c’est accepter d’être déplacé.  
-Même subtilement.  
-Même en silence.
-  </p>
-
-  <p class="paragraph">
-Dans ce retrait volontaire,  
-une autre réalité apparaît.  
-Plus lente.  
-Plus ample.
-  </p>
-
-  <p class="paragraph">
-Le contemplateur d’art  
-ne cherche pas la vérité.  
-Il écoute ce qui se tient  
-derrière le regard.
-  </p>
-
-  <p class="signature">— Alexandre ose A</p>
-
-  <div class="newsletter">
-    <h2>Correspondance</h2>
-    <p>
-      Recevoir, à intervalles rares,  
-      des fragments et des invitations à contempler.
-    </p>
-
-    <a href="http://eepurl.com/juafzg" target="_blank">
-      Entrer dans la correspondance
-    </a>
-  </div>
-
-</div>
-
 <script>
-  const paragraphs = document.querySelectorAll(".paragraph");
-  let index = 0;
-  let hasStarted = false;
-  let voiceEnabled = true;
-  let silenceOnly = false;
-  const synth = window.speechSynthesis;
-  let selectedVoice = null;
+/* ===============================
+   CONFIGURATION GÉNÉRALE
+================================ */
 
-  const startBtn = document.getElementById("startExperience");
-  const silenceBtn = document.getElementById("silenceToggle");
+const paragraphs = document.querySelectorAll(".paragraph");
+const synth = window.speechSynthesis;
 
-  function loadVoices() {
-    const voices = synth.getVoices();
-    selectedVoice =
-      voices.find(v => v.lang === "fr-FR" && v.name.toLowerCase().includes("female")) ||
-      voices.find(v => v.lang === "fr-FR") ||
-      voices[0];
-  }
+let index = 0;
+let hasStarted = false;      // mode exposition : une seule lecture
+let silenceOnly = false;
+let selectedVoice = null;
 
-  loadVoices();
-  if (speechSynthesis.onvoiceschanged !== undefined) {
-    speechSynthesis.onvoiceschanged = loadVoices;
-  }
+/* ===============================
+   BOUTONS
+================================ */
 
-  startBtn.addEventListener("click", () => {
-    if (hasStarted) return; // MODE EXPOSITION : une seule lecture
-    hasStarted = true;
-    voiceEnabled = true;
-    startBtn.style.display = "none";
-    showNext();
-  });
+const startBtn = document.getElementById("startExperience");
+const silenceBtn = document.getElementById("silenceToggle");
 
-  silenceBtn.addEventListener("click", () => {
-    silenceOnly = true;
-    voiceEnabled = false;
-    synth.cancel();
-    silenceBtn.textContent = "✔ Silence activé";
-  });
+/* ===============================
+   SÉLECTION VOIX FÉMININE
+================================ */
 
-  function speak(text) {
-    if (!voiceEnabled || silenceOnly || !selectedVoice) return;
+function loadVoices() {
+  const voices = synth.getVoices();
 
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.voice = selectedVoice;
-    utterance.lang = "fr-FR";
-    utterance.rate = 0.55;   // très lent
-    utterance.pitch = 1.05; // douceur
-    utterance.volume = 0.85;
+  // Priorité à une voix féminine française si disponible
+  selectedVoice =
+    voices.find(v =>
+      v.lang === "fr-FR" &&
+      (
+        v.name.toLowerCase().includes("female") ||
+        v.name.toLowerCase().includes("femme") ||
+        v.name.toLowerCase().includes("julie") ||
+        v.name.toLowerCase().includes("audrey")
+      )
+    )
+    || voices.find(v => v.lang === "fr-FR")
+    || voices[0];
+}
 
-    synth.cancel();
-    synth.speak(utterance);
-  }
+loadVoices();
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = loadVoices;
+}
 
-  function showNext() {
-    if (index < paragraphs.length) {
-      const p = paragraphs[index];
-      p.style.opacity = 1;
+/* ===============================
+   CONTRÔLES UTILISATEUR
+================================ */
 
-      setTimeout(() => {
-        speak(p.innerText);
-      }, 800); // respiration
+startBtn.addEventListener("click", () => {
+  if (hasStarted) return;          // une seule lecture (musée)
+  hasStarted = true;
+  silenceOnly = false;
+  startBtn.style.display = "none";
+  revealNextParagraph();
+});
 
-      index++;
-      setTimeout(showNext, 5600);
-    }
-  }
+silenceBtn.addEventListener("click", () => {
+  silenceOnly = true;
+  synth.cancel();
+  silenceBtn.textContent = "✔ Silence activé";
+});
+
+/* ===============================
+   LECTURE VOCALE
+================================ */
+
+function speak(text) {
+  if (silenceOnly || !selectedVoice) return;
+
+  const utterance = new SpeechSynthesisUtterance(text);
+
+  utterance.voice = selectedVoice;
+  utterance.lang = "fr-FR";
+
+  // Paramètres pour voix douce, féminine, contemplative
+  utterance.rate = 0.55;    // très lent
+  utterance.pitch = 1.05;   // légèrement plus doux
+  utterance.volume = 0.85;
+
+  synth.cancel();
+  synth.speak(utterance);
+}
+
+/* ===============================
+   ANIMATION DU TEXTE
+================================ */
+
+function revealNextParagraph() {
+  if (index >= paragraphs.length) return;
+
+  const paragraph = paragraphs[index];
+  paragraph.style.opacity = 1;
+
+  // respiration avant la voix
+  setTimeout(() => {
+    speak(paragraph.innerText);
+  }, 900);
+
+  index++;
+
+  // rythme lent et régulier
+  setTimeout(revealNextParagraph, 5800);
+}
 </script>
-
-</body>
-</html>
