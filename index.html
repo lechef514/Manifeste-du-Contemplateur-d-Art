@@ -1,0 +1,74 @@
+<script>
+  const paragraphs = document.querySelectorAll(".paragraph");
+  let index = 0;
+  let voiceEnabled = false;
+  let silenceOnly = false;
+  const synth = window.speechSynthesis;
+  let selectedVoice = null;
+
+  const voiceBtn = document.getElementById("voiceToggle");
+  const silenceBtn = document.getElementById("silenceToggle");
+
+  // Sélection d’une voix féminine française (si disponible)
+  function loadVoices() {
+    const voices = synth.getVoices();
+    selectedVoice = voices.find(v =>
+      v.lang === "fr-FR" &&
+      (v.name.toLowerCase().includes("female") ||
+       v.name.toLowerCase().includes("femme") ||
+       v.name.toLowerCase().includes("julie") ||
+       v.name.toLowerCase().includes("audrey"))
+    ) || voices.find(v => v.lang === "fr-FR") || voices[0];
+  }
+
+  loadVoices();
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  voiceBtn.addEventListener("click", () => {
+    voiceEnabled = !voiceEnabled;
+    silenceOnly = false;
+    voiceBtn.textContent = voiceEnabled ? "⏸ Désactiver la voix" : "▶ Activer la voix";
+    silenceBtn.textContent = "◼ Silence only";
+  });
+
+  silenceBtn.addEventListener("click", () => {
+    silenceOnly = true;
+    voiceEnabled = false;
+    synth.cancel();
+    silenceBtn.textContent = "✔ Silence activé";
+    voiceBtn.textContent = "▶ Activer la voix";
+  });
+
+  function speak(text) {
+    if (!voiceEnabled || silenceOnly || !selectedVoice) return;
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.voice = selectedVoice;
+    utterance.lang = "fr-FR";
+    utterance.rate = 0.6;      // PLUS LENT
+    utterance.pitch = 1.05;    // LÉGÈRE DOUCEUR
+    utterance.volume = 0.85;
+
+    synth.cancel();
+    synth.speak(utterance);
+  }
+
+  function showNext() {
+    if (index < paragraphs.length) {
+      const p = paragraphs[index];
+      p.style.opacity = 1;
+
+      // petit silence avant la lecture (respiration)
+      setTimeout(() => {
+        speak(p.innerText);
+      }, 600);
+
+      index++;
+      setTimeout(showNext, 5200); // rythme plus lent
+    }
+  }
+
+  showNext();
+</script>
