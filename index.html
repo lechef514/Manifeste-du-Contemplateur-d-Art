@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manifeste du Contemplateur d’Art</title>
+<title>Manifeste du contemplateur d’art</title>
 
 <style>
   html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #f7f7f5;
+    background: #f6f6f4;
     color: #111;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     overflow: hidden;
   }
 
-  /* INTRO (logo + titre) */
+  /* INTRO */
   .intro {
     position: fixed;
     inset: 0;
@@ -24,29 +24,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #f7f7f5;
-    transition: opacity 2s ease;
+    background: #f6f6f4;
+    transition: opacity 1.5s ease;
     z-index: 10;
-  }
-
-  .intro img {
-    max-width: 140px;
-    margin-bottom: 40px;
-    opacity: 0.85;
-    transition: opacity 2s ease;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    font-weight: 400;
-    letter-spacing: 1.5px;
-    margin: 0;
     text-align: center;
   }
 
+  .intro img {
+    max-width: 150px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    transition: opacity 1.5s ease;
+  }
+
+  .intro h1 {
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    margin: 0;
+  }
+
   .intro .hint {
-    margin-top: 50px;
-    font-size: 12px;
+    margin-top: 40px;
+    font-size: 13px;
     color: #777;
   }
 
@@ -62,23 +62,24 @@
 
   .paragraph {
     position: absolute;
-    max-width: 720px;
-    padding: 0 40px;
-    font-size: 20px;
-    line-height: 1.9;
-    text-align: left;
+    max-width: 900px;
+    padding: 0 60px;
+    font-size: 26px;
+    line-height: 1.7;
+    text-align: center;
     opacity: 0;
-    transition: opacity 2.5s ease;
+    transition: opacity 1.8s ease;
     white-space: pre-wrap;
   }
 
   .signature {
     position: absolute;
     bottom: 80px;
-    font-size: 16px;
+    font-size: 18px;
     font-style: italic;
     opacity: 0;
-    transition: opacity 2s ease;
+    transition: opacity 1.5s ease;
+    text-align: center;
   }
 </style>
 </head>
@@ -87,74 +88,102 @@
 
 <!-- INTRO -->
 <div class="intro" id="intro">
-  <img src="logo.png" alt="Logo" id="logo">
-  <h1>Manifeste du Contemplateur d’Art</h1>
-  <div class="hint">Cliquer pour entrer</div>
+  <img src="logo.png" alt="Logo">
+  <h1>Manifeste du contemplateur d’art</h1>
+  <div class="hint">Cliquer pour commencer</div>
 </div>
 
-<!-- SCÈNE DE LECTURE -->
+<!-- SCÈNE -->
 <div class="stage">
 
-  <div class="paragraph">Le contemplateur d’art est un être poreux.
-Il ne prend pas l’œuvre.
-Il lui fait place.</div>
+  <div class="paragraph">Je suis celui qui s’arrête.
+Là où tout s’accélère, je revendique cette intention comme acte fondateur.
+Devant l’œuvre, je suspends l’utilité, l’urgence et la fonction.
+Je n’attends rien : je me rends disponible.</div>
 
-  <div class="paragraph">Il ne cherche ni message ni démonstration.
-Il accepte de ne pas savoir.</div>
+  <div class="paragraph">Toute œuvre est une énigme ouverte.
+En la regardant, je ne cherche pas à la posséder, mais à la rencontrer.
+La contemplation n’est pas réception passive :
+c’est une mise en relation, une tension vivante entre deux présences —
+celle de l’œuvre et la mienne.</div>
 
-  <div class="paragraph">Le regard n’impose rien.
-Il se tient là,
-dans une disponibilité silencieuse.</div>
+  <div class="paragraph">Je reconnais que chaque regard est singulier.
+Je rejette l’idée qu’il n’existe qu’une seule lecture juste.
+Je revendique mon droit à la subjectivité,
+à l’émotion, à la résonance intime —
+sans jamais les ériger en vérité universelle.</div>
 
-  <div class="paragraph">Contempler n’est pas analyser.
-C’est ralentir suffisamment
-pour que quelque chose
-puisse advenir.</div>
+  <div class="paragraph">Je m’ouvre à l’œuvre avant la connaissance.
+Je laisse les concepts venir après l’expérience et non l’inverse.
+La contemplation commence par le corps
+et ses percepteurs émosensoriels.
+Suit la tête et la pensée,
+non pour dominer, mais pour éclairer.</div>
 
-  <div class="paragraph">L’œuvre ne demande pas à être comprise.
-Elle existe.
-Elle persiste.</div>
+  <div class="paragraph">Ma réaction fait l’œuvre.
+L’œuvre me fait aussi.
+Chaque rencontre transforme imperceptiblement
+la manière dont je vois,
+dont je sens,
+dont j’habite le monde.
+La contemplation est une co-création métabolique.</div>
 
-  <div class="paragraph">Elle attend un espace intérieur,
-libre de commentaires,
-libre d’intention.</div>
+  <div class="paragraph">Je refuse l’instantanéité imposée.
+Je reconnais à l’œuvre le droit d’exiger du temps,
+de la patience,
+de la maturation.
+Comprendre est parfois immédiat,
+mais souvent,
+cela germe en silence,
+longtemps après le départ.</div>
 
-  <div class="paragraph">Le contemplateur devient surface.
-Résonance.
-Temps offert.</div>
+  <div class="paragraph">Contempler, aujourd’hui, est un acte de résistance.
+Contre la vitesse.
+Contre la saturation visuelle.
+Contre l’oubli de la profondeur.
+Je défends le regard lent,
+attentif,
+précis,
+comme un geste politique et existentiel.</div>
 
-  <div class="paragraph">L’attention qu’il accorde
-n’est pas une prise,
-mais un retrait.</div>
+  <div class="paragraph">Je me présente devant l’œuvre
+sans certitude,
+sans surplomb.
+Je reconnais ce qui m’échappe.
+L’incompréhension n’est pas un échec
+mais un espace de liberté
+où la pensée peut se déplacer.</div>
 
-  <div class="paragraph">Regarder une œuvre,
-c’est consentir
-à être déplacé,
-sans savoir vers où.</div>
+  <div class="paragraph">La contemplation ne s’arrête pas
+lorsque je quitte l’œuvre.
+Elle se poursuit dans la mémoire,
+dans l’imaginaire,
+dans la manière dont mes gestes s’altèrent.
+Chaque rencontre est une semence
+déposée dans le regard.</div>
 
-  <div class="paragraph">Dans cette suspension,
-une autre densité du réel
-se révèle.</div>
+  <div class="paragraph">Enfin, j’affirme que contempler
+est une source de joie profonde :
+la joie d’être traversé
+par quelque chose qui me dépasse,
+la joie de sentir le monde autrement,
+la joie de percevoir,
+un instant,
+la fragile splendeur du réel.</div>
 
-  <div class="paragraph">Le contemplateur d’art
-ne cherche pas la vérité.
-Il demeure.</div>
-
-  <div class="paragraph">Et dans ce demeurer,
-quelque chose respire.</div>
-
-  <div class="signature" id="signature">— Alexandre ose A</div>
+  <div class="signature" id="signature">
+    Fabulé par Alexandre Grey
+  </div>
 
 </div>
 
 <script>
   const intro = document.getElementById("intro");
-  const logo = document.getElementById("logo");
   const paragraphs = document.querySelectorAll(".paragraph");
   const signature = document.getElementById("signature");
 
   const audio = new Audio("polisongood.mp3");
-  audio.volume = 0.5;
+  audio.volume = 0.6;
   audio.preload = "auto";
 
   let index = 0;
@@ -167,8 +196,8 @@ quelque chose respire.</div>
 
     if (i >= paragraphs.length) {
       setTimeout(() => {
-        signature.style.opacity = 0.7;
-      }, 3000);
+        signature.style.opacity = 0.85;
+      }, 1500);
       return;
     }
 
@@ -176,21 +205,20 @@ quelque chose respire.</div>
 
     setTimeout(() => {
       showParagraph(i + 1);
-    }, 9000); // rythme lent muséal
+    }, 5500); // déroulement accéléré
   }
 
   window.addEventListener("click", () => {
     if (started) return;
     started = true;
 
-    logo.style.opacity = 0;
     intro.style.opacity = 0;
 
     setTimeout(() => {
       intro.style.display = "none";
       audio.play().catch(() => {});
       showParagraph(0);
-    }, 2000);
+    }, 1200);
   }, { once: true });
 </script>
 
