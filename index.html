@@ -6,193 +6,220 @@
 <title>Manifeste du Contemplateur d’Art</title>
 
 <style>
-  body {
+  html, body {
     margin: 0;
-    padding: 40px;
-    background-color: #000;
-    color: #00FF00;
-    font-family: "Courier New", monospace;
-    text-align: center;
-    overflow-y: auto;
+    padding: 0;
+    height: 100%;
+    background: #f7f7f5;
+    color: #111;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow: hidden;
+  }
+
+  .screen {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 2s ease;
+  }
+
+  .logo {
+    max-width: 140px;
+    margin-bottom: 40px;
+    opacity: 0.85;
+    transition: opacity 2s ease;
   }
 
   h1 {
-    font-size: 42px;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    margin: 0;
   }
 
   .container {
-    max-width: 900px;
-    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 760px;
+    padding: 0 40px;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 3s ease;
   }
 
   .paragraph {
+    font-size: 19px;
+    line-height: 1.9;
+    margin: 0;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
-    font-size: 20px;
-    line-height: 1.6;
-    margin: 40px 0;
-    text-align: left;
+    transition: opacity 2.5s ease;
     white-space: pre-wrap;
   }
 
-  .cursor {
-    width: 12px;
-    height: 24px;
-    background-color: #00FF00;
-    margin: 30px auto;
-    animation: blink 1s steps(2, start) infinite;
-  }
-
-  @keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
+  .signature {
+    margin-top: 60px;
+    font-size: 17px;
+    font-style: italic;
+    opacity: 0.7;
+    text-align: center;
   }
 
   .newsletter {
-    margin-top: 60px;
-    padding-top: 30px;
-    border-top: 1px solid #00FF00;
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid #ddd;
+    text-align: center;
   }
 
   .newsletter h2 {
-    font-size: 26px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
   }
 
   .newsletter p {
-    font-size: 16px;
-    margin-bottom: 25px;
-    text-align: center;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: #333;
   }
 
   .newsletter a {
     display: inline-block;
-    padding: 12px 26px;
-    border: 2px solid #00FF00;
-    color: #00FF00;
+    padding: 12px 34px;
+    border: 1px solid #111;
+    color: #111;
     text-decoration: none;
-    font-size: 18px;
-    transition: 0.2s ease;
+    font-size: 14px;
+    transition: 0.3s ease;
   }
 
   .newsletter a:hover {
-    background-color: #00FF00;
-    color: #000;
+    background: #111;
+    color: #f7f7f5;
   }
 
-  a {
-    color: #00FF00;
-    text-decoration: underline;
+  .hint {
+    position: absolute;
+    bottom: 30px;
+    font-size: 12px;
+    color: #777;
   }
 </style>
 </head>
 
 <body>
 
-<h1>Manifeste du Contemplateur d’Art</h1>
+<!-- ÉCRAN D’ACCUEIL -->
+<div class="screen" id="intro">
+  <img src="logo.png" alt="Logo" class="logo" id="logo">
+  <h1>Manifeste du Contemplateur d’Art</h1>
+  <div class="hint">Cliquer pour entrer</div>
+</div>
 
-<div class="container">
+<!-- TEXTE -->
+<div class="container" id="text">
 
-  <p class="paragraph">Le contemplateur d’art est un être poreux. Il ne prend pas possession de l’œuvre, il s’offre à elle. Il ne conquiert pas le sens, il le laisse venir à lui.</p>
+  <p class="paragraph">Le contemplateur d’art est un être poreux.
+Il ne prend pas l’œuvre.
+Il lui fait place.</p>
 
-  <p class="paragraph">Il accueille.  
-L’image, le geste, la matière, la forme — tout est reçu avant d’être compris.  
-Le regard n’est pas un projecteur mais une membrane.</p>
+  <p class="paragraph">Il ne cherche ni message ni démonstration.
+Il accepte de ne pas savoir.</p>
 
-  <p class="paragraph">Contempler, ce n’est pas analyser.  
-C’est ralentir jusqu’à sentir le mouvement secret de ce qui ne bouge pas.</p>
+  <p class="paragraph">Le regard n’impose rien.
+Il se tient là,
+dans une disponibilité silencieuse.</p>
 
-  <p class="paragraph">L’œuvre n’a pas besoin d’être expliquée pour exister.  
-Elle n’a pas d’obligation d’être comprise.  
-Elle se suffit.  
-Elle attend seulement un espace intérieur où résonner.</p>
+  <p class="paragraph">Contempler n’est pas analyser.
+C’est ralentir suffisamment
+pour que quelque chose
+puisse advenir.</p>
 
-  <p class="paragraph">Le contemplateur d’art est un instrument.  
-L’œuvre joue de lui.  
-Il devient vibration, résonance, chambre d’écho.</p>
+  <p class="paragraph">L’œuvre ne demande pas à être comprise.
+Elle existe.
+Elle persiste.</p>
 
-  <p class="paragraph">L’attention qu’il porte est une forme d’amour.  
-Un amour sans désir de posséder.  
-Un amour qui ne retient rien.</p>
+  <p class="paragraph">Elle attend un espace intérieur,
+libre de commentaires,
+libre d’intention.</p>
 
-  <p class="paragraph">Regarder une œuvre, c’est accepter d’être transformé par elle.  
-Même imperceptiblement.  
-Même silencieusement.</p>
+  <p class="paragraph">Le contemplateur devient surface.
+Résonance.
+Temps offert.</p>
 
-  <p class="paragraph">Contempler, c’est suspendre la volonté.  
-S’ouvrir.  
-Ne plus vouloir décider.  
-Ne plus vouloir juger.</p>
+  <p class="paragraph">L’attention qu’il accorde
+n’est pas une prise,
+mais un retrait.</p>
 
-  <p class="paragraph">Dans ce renoncement, une autre réalité apparaît.  
-Plus lente.  
-Plus douce.  
-Plus vaste.</p>
+  <p class="paragraph">Regarder une œuvre,
+c’est consentir
+à être déplacé,
+sans savoir vers où.</p>
 
-  <p class="paragraph">Le contemplateur d’art ne cherche pas la vérité.  
-Il se rend disponible à ce qui vit derrière les yeux.</p>
+  <p class="paragraph">Dans cette suspension,
+une autre densité du réel
+se révèle.</p>
 
-  <p class="paragraph">C’est dans ce silence que l’œuvre respire.  
-Et que l’être écoute.</p>
+  <p class="paragraph">Le contemplateur d’art
+ne cherche pas la vérité.
+Il demeure.</p>
 
-  <p style="margin-top:30px; font-size:18px; opacity:0.8; font-style:italic; text-align:center;">
-    — Alexandre ose A
-  </p>
+  <p class="paragraph">Et dans ce demeurer,
+quelque chose respire.</p>
+
+  <p class="signature">— Alexandre ose A</p>
 
   <div class="newsletter">
-    <h2>Infolettre</h2>
+    <h2>Correspondance</h2>
     <p>
-      Recevez des fragments, des silences écrits,  
-      et des invitations à contempler.
+      Fragments, silences écrits,
+      invitations à ralentir.
     </p>
-
     <a href="http://eepurl.com/juafzg" target="_blank">
-      S’inscrire à l’infolettre
+      S’inscrire
     </a>
   </div>
 
-  <p style="margin-top:50px;">
-    <a href="https://www.instagram.com/lc.du.chef/" target="_blank">
-      → Suivre sur Instagram : @lc.du.chef
-    </a>
-  </p>
-
 </div>
 
-<div class="cursor"></div>
-
 <script>
+  const intro = document.getElementById("intro");
+  const logo = document.getElementById("logo");
+  const text = document.getElementById("text");
   const paragraphs = document.querySelectorAll(".paragraph");
+
   const audio = new Audio("polisongood.mp3");
+  audio.volume = 0.5;
+  audio.preload = "auto";
 
   let index = 0;
   let started = false;
 
-  audio.volume = 0.6; // volume doux, galerie
-  audio.preload = "auto";
-
   function showNext() {
-    if (index < paragraphs.length) {
-      paragraphs[index].style.opacity = 1;
-      index++;
-      setTimeout(showNext, 3200);
-    }
+    if (index >= paragraphs.length) return;
+    paragraphs[index].style.opacity = 1;
+    index++;
+    setTimeout(showNext, 7000);
   }
 
-  // Démarrage simultané musique + texte
   window.addEventListener("click", () => {
     if (started) return;
     started = true;
 
-    audio.play().catch(() => {
-      console.log("Lecture audio bloquée jusqu'à interaction utilisateur.");
-    });
+    logo.style.opacity = 0;
+    intro.style.opacity = 0;
 
-    showNext();
+    setTimeout(() => {
+      intro.style.display = "none";
+      text.style.opacity = 1;
+      audio.play().catch(() => {});
+      showNext();
+    }, 2000);
   }, { once: true });
 </script>
 
