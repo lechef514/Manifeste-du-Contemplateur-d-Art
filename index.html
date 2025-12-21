@@ -16,182 +16,142 @@
     overflow: hidden;
   }
 
-  .screen {
-    height: 100vh;
-    width: 100vw;
+  /* INTRO (logo + titre) */
+  .intro {
+    position: fixed;
+    inset: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: #f7f7f5;
     transition: opacity 2s ease;
+    z-index: 10;
   }
 
-  .logo {
+  .intro img {
     max-width: 140px;
     margin-bottom: 40px;
     opacity: 0.85;
     transition: opacity 2s ease;
   }
 
-  h1 {
+  .intro h1 {
     font-size: 32px;
     font-weight: 400;
     letter-spacing: 1.5px;
     margin: 0;
+    text-align: center;
   }
 
-  .container {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    max-width: 760px;
-    padding: 0 40px;
-    text-align: left;
-    opacity: 0;
-    transition: opacity 3s ease;
+  .intro .hint {
+    margin-top: 50px;
+    font-size: 12px;
+    color: #777;
+  }
+
+  /* SCÈNE MUSÉALE */
+  .stage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
   }
 
   .paragraph {
-    font-size: 19px;
+    position: absolute;
+    max-width: 720px;
+    padding: 0 40px;
+    font-size: 20px;
     line-height: 1.9;
-    margin: 0;
+    text-align: left;
     opacity: 0;
     transition: opacity 2.5s ease;
     white-space: pre-wrap;
   }
 
   .signature {
-    margin-top: 60px;
-    font-size: 17px;
-    font-style: italic;
-    opacity: 0.7;
-    text-align: center;
-  }
-
-  .newsletter {
-    margin-top: 80px;
-    padding-top: 40px;
-    border-top: 1px solid #ddd;
-    text-align: center;
-  }
-
-  .newsletter h2 {
-    font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 20px;
-  }
-
-  .newsletter p {
-    font-size: 14px;
-    line-height: 1.7;
-    margin-bottom: 30px;
-    color: #333;
-  }
-
-  .newsletter a {
-    display: inline-block;
-    padding: 12px 34px;
-    border: 1px solid #111;
-    color: #111;
-    text-decoration: none;
-    font-size: 14px;
-    transition: 0.3s ease;
-  }
-
-  .newsletter a:hover {
-    background: #111;
-    color: #f7f7f5;
-  }
-
-  .hint {
     position: absolute;
-    bottom: 30px;
-    font-size: 12px;
-    color: #777;
+    bottom: 80px;
+    font-size: 16px;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 2s ease;
   }
 </style>
 </head>
 
 <body>
 
-<!-- ÉCRAN D’ACCUEIL -->
-<div class="screen" id="intro">
-  <img src="logo.png" alt="Logo" class="logo" id="logo">
+<!-- INTRO -->
+<div class="intro" id="intro">
+  <img src="logo.png" alt="Logo" id="logo">
   <h1>Manifeste du Contemplateur d’Art</h1>
   <div class="hint">Cliquer pour entrer</div>
 </div>
 
-<!-- TEXTE -->
-<div class="container" id="text">
+<!-- SCÈNE DE LECTURE -->
+<div class="stage">
 
-  <p class="paragraph">Le contemplateur d’art est un être poreux.
+  <div class="paragraph">Le contemplateur d’art est un être poreux.
 Il ne prend pas l’œuvre.
-Il lui fait place.</p>
+Il lui fait place.</div>
 
-  <p class="paragraph">Il ne cherche ni message ni démonstration.
-Il accepte de ne pas savoir.</p>
+  <div class="paragraph">Il ne cherche ni message ni démonstration.
+Il accepte de ne pas savoir.</div>
 
-  <p class="paragraph">Le regard n’impose rien.
+  <div class="paragraph">Le regard n’impose rien.
 Il se tient là,
-dans une disponibilité silencieuse.</p>
+dans une disponibilité silencieuse.</div>
 
-  <p class="paragraph">Contempler n’est pas analyser.
+  <div class="paragraph">Contempler n’est pas analyser.
 C’est ralentir suffisamment
 pour que quelque chose
-puisse advenir.</p>
+puisse advenir.</div>
 
-  <p class="paragraph">L’œuvre ne demande pas à être comprise.
+  <div class="paragraph">L’œuvre ne demande pas à être comprise.
 Elle existe.
-Elle persiste.</p>
+Elle persiste.</div>
 
-  <p class="paragraph">Elle attend un espace intérieur,
+  <div class="paragraph">Elle attend un espace intérieur,
 libre de commentaires,
-libre d’intention.</p>
+libre d’intention.</div>
 
-  <p class="paragraph">Le contemplateur devient surface.
+  <div class="paragraph">Le contemplateur devient surface.
 Résonance.
-Temps offert.</p>
+Temps offert.</div>
 
-  <p class="paragraph">L’attention qu’il accorde
+  <div class="paragraph">L’attention qu’il accorde
 n’est pas une prise,
-mais un retrait.</p>
+mais un retrait.</div>
 
-  <p class="paragraph">Regarder une œuvre,
+  <div class="paragraph">Regarder une œuvre,
 c’est consentir
 à être déplacé,
-sans savoir vers où.</p>
+sans savoir vers où.</div>
 
-  <p class="paragraph">Dans cette suspension,
+  <div class="paragraph">Dans cette suspension,
 une autre densité du réel
-se révèle.</p>
+se révèle.</div>
 
-  <p class="paragraph">Le contemplateur d’art
+  <div class="paragraph">Le contemplateur d’art
 ne cherche pas la vérité.
-Il demeure.</p>
+Il demeure.</div>
 
-  <p class="paragraph">Et dans ce demeurer,
-quelque chose respire.</p>
+  <div class="paragraph">Et dans ce demeurer,
+quelque chose respire.</div>
 
-  <p class="signature">— Alexandre ose A</p>
-
-  <div class="newsletter">
-    <h2>Correspondance</h2>
-    <p>
-      Fragments, silences écrits,
-      invitations à ralentir.
-    </p>
-    <a href="http://eepurl.com/juafzg" target="_blank">
-      S’inscrire
-    </a>
-  </div>
+  <div class="signature" id="signature">— Alexandre ose A</div>
 
 </div>
 
 <script>
   const intro = document.getElementById("intro");
   const logo = document.getElementById("logo");
-  const text = document.getElementById("text");
   const paragraphs = document.querySelectorAll(".paragraph");
+  const signature = document.getElementById("signature");
 
   const audio = new Audio("polisongood.mp3");
   audio.volume = 0.5;
@@ -200,11 +160,23 @@ quelque chose respire.</p>
   let index = 0;
   let started = false;
 
-  function showNext() {
-    if (index >= paragraphs.length) return;
-    paragraphs[index].style.opacity = 1;
-    index++;
-    setTimeout(showNext, 7000);
+  function showParagraph(i) {
+    if (i > 0) {
+      paragraphs[i - 1].style.opacity = 0;
+    }
+
+    if (i >= paragraphs.length) {
+      setTimeout(() => {
+        signature.style.opacity = 0.7;
+      }, 3000);
+      return;
+    }
+
+    paragraphs[i].style.opacity = 1;
+
+    setTimeout(() => {
+      showParagraph(i + 1);
+    }, 9000); // rythme lent muséal
   }
 
   window.addEventListener("click", () => {
@@ -216,9 +188,8 @@ quelque chose respire.</p>
 
     setTimeout(() => {
       intro.style.display = "none";
-      text.style.opacity = 1;
       audio.play().catch(() => {});
-      showNext();
+      showParagraph(0);
     }, 2000);
   }, { once: true });
 </script>
