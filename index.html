@@ -3,98 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manifeste du contemplateur d’art</title>
+<title>Manifeste du contemplateur d’art — Monumental</title>
 
 <style>
   html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
     background: #f6f6f4;
     color: #111;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
-  /* INTRO */
-  .intro {
-    position: fixed;
-    inset: 0;
+  body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background: #f6f6f4;
-    transition: opacity 1.5s ease;
-    z-index: 10;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: 1400px;
+    padding: 140px 100px 200px;
+    box-sizing: border-box;
     text-align: center;
   }
 
-  .intro img {
-    max-width: 150px;
-    margin-bottom: 40px;
-    opacity: 0.9;
-    transition: opacity 1.5s ease;
+  /* LOGO */
+  .logo {
+    max-width: 320px;
+    margin: 0 auto 80px;
+    opacity: 0.95;
+    display: block;
   }
 
-  .intro h1 {
-    font-size: 40px;
-    font-weight: 400;
-    letter-spacing: 1.5px;
-    margin: 0;
+  h1 {
+    font-size: 64px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    margin-bottom: 140px;
   }
 
-  .intro .hint {
-    margin-top: 40px;
-    font-size: 13px;
-    color: #777;
-  }
-
-  /* SCÈNE MUSÉALE */
-  .stage {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-  }
-
+  /* TEXTE MONUMENTAL */
   .paragraph {
-    position: absolute;
-    max-width: 900px;
-    padding: 0 60px;
-    font-size: 26px;
-    line-height: 1.7;
-    text-align: center;
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1.9;
+    margin: 0 auto 120px;
+    max-width: 1100px;
     opacity: 0;
-    transition: opacity 1.8s ease;
+    transform: translateY(40px);
+    transition: opacity 2s ease, transform 2s ease;
     white-space: pre-wrap;
   }
 
+  .paragraph.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SIGNATURE */
   .signature {
-    position: absolute;
-    bottom: 80px;
-    font-size: 18px;
+    margin-top: 180px;
+    font-size: 28px;
+    font-weight: 500;
     font-style: italic;
     opacity: 0;
-    transition: opacity 1.5s ease;
-    text-align: center;
+    transition: opacity 2s ease;
+  }
+
+  .signature.visible {
+    opacity: 0.85;
+  }
+
+  /* LIENS */
+  .links {
+    margin-top: 120px;
+    font-size: 22px;
+  }
+
+  .links a {
+    display: block;
+    margin: 24px 0;
+    color: #111;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding-bottom: 8px;
+    transition: opacity 0.3s ease;
+  }
+
+  .links a:hover {
+    opacity: 0.6;
   }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<div class="intro" id="intro">
-  <img src="logo.png" alt="Logo">
-  <h1>Manifeste du contemplateur d’art</h1>
-  <div class="hint">Cliquer pour commencer</div>
-</div>
+<div class="wrapper">
 
-<!-- SCÈNE -->
-<div class="stage">
+  <img src="logo.png" alt="Logo" class="logo">
+
+  <h1>Manifeste du contemplateur d’art</h1>
 
   <div class="paragraph">Je suis celui qui s’arrête.
 Là où tout s’accélère, je revendique cette intention comme acte fondateur.
@@ -175,51 +184,43 @@ la fragile splendeur du réel.</div>
     Fabulé par Alexandre Grey
   </div>
 
+  <div class="links">
+    <a href="http://eepurl.com/juafzg" target="_blank">
+      S’inscrire à l’infolettre
+    </a>
+
+    <a href="https://www.instagram.com/lc.du.chef/" target="_blank">
+      Instagram — @lc.du.chef
+    </a>
+  </div>
+
 </div>
 
 <script>
-  const intro = document.getElementById("intro");
-  const paragraphs = document.querySelectorAll(".paragraph");
-  const signature = document.getElementById("signature");
-
-  const audio = new Audio("polisongood.mp3");
+  const paragraphs = document.querySelectorAll('.paragraph');
+  const signature = document.getElementById('signature');
+  const audio = new Audio('polisongood.mp3');
   audio.volume = 0.6;
-  audio.preload = "auto";
+  audio.preload = 'auto';
 
   let index = 0;
-  let started = false;
 
-  function showParagraph(i) {
-    if (i > 0) {
-      paragraphs[i - 1].style.opacity = 0;
-    }
-
-    if (i >= paragraphs.length) {
+  function revealNext() {
+    if (index < paragraphs.length) {
+      paragraphs[index].classList.add('visible');
+      index++;
+      setTimeout(revealNext, 3200); // rythme rapide mais lisible
+    } else {
       setTimeout(() => {
-        signature.style.opacity = 0.85;
-      }, 1500);
-      return;
+        signature.classList.add('visible');
+      }, 2000);
     }
-
-    paragraphs[i].style.opacity = 1;
-
-    setTimeout(() => {
-      showParagraph(i + 1);
-    }, 5500); // déroulement accéléré
   }
 
-  window.addEventListener("click", () => {
-    if (started) return;
-    started = true;
-
-    intro.style.opacity = 0;
-
-    setTimeout(() => {
-      intro.style.display = "none";
-      audio.play().catch(() => {});
-      showParagraph(0);
-    }, 1200);
-  }, { once: true });
+  window.addEventListener('load', () => {
+    audio.play().catch(() => {});
+    revealNext();
+  });
 </script>
 
 </body>
